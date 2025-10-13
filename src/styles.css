@@ -1,0 +1,349 @@
+/* Tipografías */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Nunito', sans-serif;;
+    background-color: #FEFAE0;
+    color: #283618;
+    line-height: 1.6;
+}
+
+
+.navbar {
+    width: 100%;
+    background-color: #283618 !important;
+}
+
+.navbar-brand {
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.8rem;
+    color: #DDA15E !important;
+}
+
+.navbar-nav .nav-link {
+    color: #DDA15E !important;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 5px;
+    padding: 8px 12px;
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover {
+    background-color: #606C38 !important;
+    color: #DDA15E !important;
+}
+
+
+.contenedor-imagen {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+    background-color: #606C38;
+}
+
+.contenedor-imagen .imagen-wrapper {
+    width: 90%;
+    max-width: 1200px;
+}
+
+.contenedor-imagen img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px #283618;
+    object-fit: cover;
+}
+
+/* Títulos */
+h1, h2 {
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: #BC6C25;
+    text-align: center;
+}
+
+h1 {
+    margin: 2rem 0 1rem 0; 
+}
+
+
+.texto-explicativo {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #606C38;
+}
+
+
+.btn-primary {
+    background-color: #BC6C25;
+    border: none;
+    color: #606C38;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #BC6C25;
+}
+
+.btn-custom {
+  background-color: #BC6C25; /* your color */
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn-custom:hover {
+  background-color: #995a1e; /* darker shade on hover */
+  color: #fff;
+}
+
+.card {
+    background-color: #FEFAE0;
+    border: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px #283618;
+    color: #606C38;
+}
+
+.card-title {
+    font-weight: bold;
+    color: #283618;
+}
+
+.card-img-top {
+    border-radius: 0.5em 0.5em 0 0;
+}
+
+
+
+.carousel {
+    margin: 2rem auto;
+    max-width: 500px;
+    max-height: 700px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #606C38;
+    box-shadow: 0 4px 12px #283618;
+}
+
+
+.carousel-item img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-size: 2rem 2rem;
+    width: 2rem;
+    height: 2rem;
+    filter: invert(100%);
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    opacity: 1;
+}
+
+
+.carousel-indicators [data-bs-target] {
+    width: 30px;
+    height: 3px;
+    margin: 0 4px;
+    background-color: #FEFAE0;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-indicators .active {
+    opacity: 1;
+}
+
+
+.carousel-caption {
+    display: none;
+}
+
+
+.custom-caption {
+    margin-top: 1rem; /* Optional spacing */
+    text-align: center;
+    background-color: #606C38;
+    color: #FEFAE0;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.custom-caption h5 {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+ /* Centrar el menú principal */
+    .nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .breadcrumb {
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+    
+    .breadcrumb-item a {
+      color: #606C38;
+      text-decoration: none;
+    }
+    
+    .breadcrumb-item.active {
+      color: #283618;
+    }
+
+    .product-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    
+    .product-detail {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+    
+    .product-image {
+      flex: 1;
+      min-width: 300px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+    }
+    
+    .product-image img {
+      max-width: 100%;
+      max-height: 400px;
+      border-radius: 8px;
+    }
+    
+    .product-info {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .product-title {
+      font-family: 'Montserrat Alternates', sans-serif;
+      color: #BC6C25;
+      font-size: 35px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .product-title2 {
+      font-family: 'Montserrat Alternates', sans-serif;
+      color: #BC6C25;
+      font-size: 25px;
+      margin-bottom: 10px;
+      align-items: center;
+      justify-content: center;
+      margin-left: 110px;
+    }
+
+    .papa_datos .label{
+      font-family: 'Montserrat Alternates', sans-serif;
+      color: #BC6C25;
+      font-weight: bold;
+    }
+    
+    .edad .value {
+    font-weight: normal;
+    color: #283618; 
+    }
+   
+    
+    .dad-price {
+      color: #283618;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #606C38, transparent);
+      margin: 25px 0;
+    }
+    
+    .product-description {
+      color: #283618;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+    
+    .dad-price {
+      color: #283618;
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 30px;   /* space from description */
+      text-align: center; /* center text inside */
+      display: flex;
+      flex-direction: column; /* stack vertically */
+      align-items: center;    /* center horizontally */
+      gap: 12px; /* space between price and button */
+    }
+
+    .btn-rentar {
+      background-color: #606c38;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    
+    
+
+    footer {
+      background-color: #283618; 
+      color: white;
+      text-align: center;
+      padding: 20px;
+      width: 100%;
+    }
