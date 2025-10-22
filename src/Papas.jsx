@@ -2,8 +2,7 @@ import { Link } from "react-router-dom";
 import papa1 from "./assets/papa1.jpg";
 import papa2 from "./assets/papa2.jpeg";
 import papa3 from "./assets/papa3.jpg";
-import papa4 from "./assets/papa4.webp";
-import papa5 from "./assets/papa5.jpg";
+// removed unused imports papa4 and papa5
 import papa6 from "./assets/papa6.jpg";
 import papa_yuli from "./assets/papa_yuli.jpg";
 import papa_pancho from "./assets/papa_pancho.jpg";

@@ -1,3 +1,5 @@
+/* eslint-env vitest, jest */
+/* global describe it expect */
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import Home from "../src/pages/Home";

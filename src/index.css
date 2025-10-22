@@ -1,5 +1,6 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* Fonts: Inter for body, Montserrat Alternates for headings */
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -11,6 +12,35 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Import Google Fonts used in the project */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat+Alternates:wght@700&display=swap');
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Montserrat Alternates', 'Inter', system-ui, sans-serif;
+}
+
+body {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+/* Navbar link styles applied globally to any .nav-link inside .navbar */
+.navbar .nav-link {
+  color: #DDA15E !important; /* same golden tone used in original design */
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.navbar .nav-link:hover {
+  background-color: #606C38 !important;
+  color: #DDA15E !important;
+}
+
+.navbar .navbar-brand {
+  font-family: 'Montserrat Alternates', 'Inter', sans-serif;
+  font-weight: 700;
+  color: #DDA15E !important;
 }
 
 a {
