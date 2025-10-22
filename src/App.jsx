@@ -27,7 +27,7 @@ function App() {
           <Route path="/Sesion" element={<Sesion />} />
           <Route path="/Registro" element={<Registro/>}/>
           <Route path="/Home" element={<Home/>}/>
-
+          <Route path="/Papas/:nombre" element={<></>}/>
         </Routes>
       </BrowserRouter>
     </LoginProvider>
