@@ -14,6 +14,7 @@ import Sesion from './Sesion.jsx';
 import Registro from './Registro.jsx';
 import Home from './pages/Home.jsx';
 import PapaDetail from './PapaDetail.jsx';
+import Payment from './Payment.jsx';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/Sesion" element={<Sesion />} />
           <Route path="/login" element={<Sesion />} />
           <Route path="/Registro" element={<Registro/>}/>
+          <Route path="/payment" element={<Payment/>} />
           <Route path="/Home" element={<Home/>}/>
           <Route path="/Papas/:nombre" element={<PapaDetail/>}/>
         </Routes>
