@@ -1,3 +1,7 @@
+
+/* Import Google Fonts used in the project (must be at file top) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat+Alternates:wght@700&display=swap');
+
 :root {
   /* Fonts: Inter for body, Montserrat Alternates for headings */
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -13,9 +17,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-/* Import Google Fonts used in the project */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat+Alternates:wght@700&display=swap');
 
 h1, h2, h3, h4, h5 {
   font-family: 'Montserrat Alternates', 'Inter', system-ui, sans-serif;
