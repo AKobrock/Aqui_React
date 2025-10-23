@@ -5,7 +5,7 @@ import Login from './Login';
 import Perfil from './Perfil';
 import { LoginProvider } from './LoginContext';
 import Navbar from './navbar';
-import Inicio from './inicio';
+import Inicio from './Inicio.jsx';
 import Papas from './Papas';
 import Nosotros from './Nosotros.jsx';
 import Contacto from './Contacto.jsx';
@@ -13,6 +13,7 @@ import './styles.css';
 import Sesion from './Sesion.jsx';
 import Registro from './Registro.jsx';
 import Home from './pages/Home.jsx';
+import PapaDetail from './PapaDetail.jsx';
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
           <Route path="/login" element={<Sesion />} />
           <Route path="/Registro" element={<Registro/>}/>
           <Route path="/Home" element={<Home/>}/>
-          <Route path="/Papas/:nombre" element={<></>}/>
+          <Route path="/Papas/:nombre" element={<PapaDetail/>}/>
         </Routes>
       </BrowserRouter>
     </LoginProvider>
