@@ -2,28 +2,23 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 
 export default function PapaDetail() {
-  const { nombre } = useParams();
+  const { id } = useParams();
   const [papa, setPapa] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    let mounted = true;
     fetch('/papas.json')
       .then((r) => r.json())
       .then((data) => {
-        if (!mounted) return;
-        const list = data.papas || [];
-        // try to match by name token (e.g., 'Hector' matches 'Papá Hector Montalvo')
-        const found = list.find((p) => {
-          if (!p.name) return false;
-          return p.name.toLowerCase().includes((nombre || '').toLowerCase());
-        });
+        const found = data.papas.find((p) => p.id === parseInt(id));
         setPapa(found || null);
+        setLoading(false);
       })
-      .catch(() => setPapa(null))
-      .finally(() => setLoading(false));
-    return () => { mounted = false; };
-  }, [nombre]);
+      .catch((error) => {
+        console.error('Error:', error);
+        setLoading(false);
+      });
+  }, [id]);
 
   if (loading) return <section className="container py-5">Cargando...</section>;
 
@@ -31,7 +26,7 @@ export default function PapaDetail() {
     return (
       <section className="container py-5">
         <h2>Papá no encontrado</h2>
-        <p>No se encontró información para "{nombre}".</p>
+        <p>No se encontró información para el ID: {id}</p>
         <Link to="/Papas" className="btn btn-secondary">Volver a Papas</Link>
       </section>
     );
@@ -41,7 +36,12 @@ export default function PapaDetail() {
     <section className="container py-5">
       <div className="row g-4 align-items-start">
         <div className="col-md-5">
-          <img src={papa.image.startsWith('images/') ? papa.image.replace('images/', '/assets/') : papa.image} alt={papa.name} className="img-fluid rounded-4 shadow-sm" style={{ width: '100%' }} />
+          <img 
+            src={papa.image.startsWith('/') ? papa.image : `/${papa.image}`}
+            alt={papa.name} 
+            className="img-fluid rounded-4 shadow-sm" 
+            style={{ width: '100%' }} 
+          />
         </div>
         <div className="col-md-7">
           <h1 className="display-6 text-end" style={{ color: '#b35d1a' }}>{papa.name}</h1>
@@ -70,9 +70,6 @@ export default function PapaDetail() {
           </div>
 
         </div>
-      </div>
-      <div className="mt-4">
-        <small className="text-muted">Nota: puedes editar la información de cada papá manualmente en <code>public/papas.json</code>.</small>
       </div>
     </section>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Login from './Login';
 import Perfil from './Perfil';
@@ -19,21 +19,23 @@ import Payment from './Payment.jsx';
 function App() {
   return (
     <LoginProvider>
-      <BrowserRouter>
+      <Router>
         <Navbar/>
-        <Routes>
-          <Route path="/" element={<Inicio />} />
-          <Route path="/Papas" element={<Papas/>} />
-          <Route path="/Nosotros" element={<Nosotros/>} />
-          <Route path="/Contacto" element={<Contacto/>} />
-          <Route path="/Sesion" element={<Sesion />} />
-          <Route path="/login" element={<Sesion />} />
-          <Route path="/Registro" element={<Registro/>}/>
-          <Route path="/payment" element={<Payment/>} />
-          <Route path="/Home" element={<Home/>}/>
-          <Route path="/Papas/:nombre" element={<PapaDetail/>}/>
-        </Routes>
-      </BrowserRouter>
+        <div>
+          <Routes>
+            <Route path="/" element={<Inicio />} />
+            <Route path="/Papas" element={<Papas/>} />
+            <Route path="/Nosotros" element={<Nosotros/>} />
+            <Route path="/Contacto" element={<Contacto/>} />
+            <Route path="/Sesion" element={<Sesion />} />
+            <Route path="/login" element={<Sesion />} />
+            <Route path="/Registro" element={<Registro/>}/>
+            <Route path="/payment" element={<Payment/>} />
+            <Route path="/Home" element={<Home/>}/>
+            <Route path="/PapaDetail/:id" element={<PapaDetail />} />
+          </Routes>
+        </div>
+      </Router>
     </LoginProvider>
   );
 }
