@@ -13,7 +13,7 @@
       "description": "Siempre cercano, paciente y con un muy buen sentido del humor. Está dispuesto a dar los mejores consejos y un abrazo para cuando lo llegues a necesitar. ¡Un papá histórico!",
       "price_per_hour": 65990,
       "price_display": "$ 65.990 por hora",
-      "image": "images/señor3.jpg",
+      "image": "/assets/papa3.jpg",
       "page": "papiRicky.html"
     },
     {
@@ -28,7 +28,7 @@
       "description": "Un papá que siempre tendrá un nuevo platillo para que puedas degustar. Alegre, creativo y muy motivador. Si no te llena el corazón con sus palabras, lo hará con sus platos. ¡Un papá motivado!",
       "price_per_hour": 65990,
       "price_display": "$ 65.990 por hora",
-      "image": "images/señor1.jpg",
+      "image": "/assets/papa1.jpg",
       "page": "papaTito.html"
     },
     {
@@ -43,7 +43,7 @@
       "description": "Papá buena onda, atento con los detalles, bastante sociable, con buen humor, bromista parrillero y animalista.",
       "price_per_hour": 40599,
       "price_display": "$ 40.599 por hora",
-      "image": "images/papa_yuli.jpg",
+      "image": "/assets/papa_yuli.jpg",
       "page": "papaYuli.html"
     },
     {
@@ -58,7 +58,7 @@
       "description": "Pancho o Panchito, como le dicen de cariño, es un papá increíble, con un gran corazón, alegre, muy divertido y lúdico e excelente contando chistes. ¡Un papá macanudo!",
       "price_per_hour": 65990,
       "price_display": "$ 65.990 por hora",
-      "image": "images/papa_pancho.jpg",
+      "image": "/assets/papa_pancho.jpg",
       "page": "papaPancho.html"
     },
     {
@@ -73,7 +73,7 @@
       "description": "Un papá protector, trabajador y con miles de increíbles historias que tiene para contarte. Siempre se hará el tiempo para estar ahí para ti y apoyarte. ¡Un papá increíble!",
       "price_per_hour": 45990,
       "price_display": "$ 45.990 por hora",
-      "image": "images/señor2.jpeg",
+      "image": "/assets/papa2.jpeg",
       "page": "papaChelo.html"
     },
     {
@@ -85,10 +85,10 @@
       "civil_status": "Separado",
       "children": 2,
       "hobbies": ["Disfrutar de teleseries", "Fútbol"],
-      "description": "Luiz es un papá simático, esforzado pero algo callado. Sin embargo, es muy cariñoso y se siente orgulloso de poder darle a sus hijos aun que sea 'lo justo y lo necesario'. ¡Un papá para disfrutar!",
+      "description": "Luiz es un papá simático, esforzado pero algo callado. Sin embargo, es muy cariñoso y",
       "price_per_hour": 35990,
       "price_display": "$ 35.990 por hora",
-      "image": "images/señor6.jpg",
+      "image": "/assets/papa6.jpg",
       "page": "papaLucho.html"
     }
   ]

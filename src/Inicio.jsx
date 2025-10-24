@@ -1,7 +1,5 @@
+import { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import papa1 from "./assets/papa1.jpg";
-import papa2 from "./assets/papa2.jpeg";
-import papa3 from "./assets/papa3.jpg";
 import portada1 from "./assets/portada_2.png";
 
 import "./Inicio.css";
@@ -9,6 +7,31 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function Inicio() {
+  const [papas, setPapas] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/papas.json')
+      .then(response => response.json())
+      .then(data => {
+        setPapas(data.papas);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        setLoading(false);
+      });
+  }, []);
+
+  // Obtener los primeros 3 papás para el carrusel
+  const hector = papas.find(papa => papa.id === 2);
+  const marcelo = papas.find(papa => papa.id === 5);
+  const ricardo = papas.find(papa => papa.id === 1);
+
+  if (loading) {
+    return <div>Cargando...</div>;
+  }
+
   return (
     <div className="page-wrapper">
       <div className="page-content">
@@ -43,59 +66,71 @@ function Inicio() {
           <div className="carousel-inner">
             {/* Héctor */}
             <div className="carousel-item active">
-              <img
-                src={papa1}
-                className="d-block w-100 rounded-top"
-                alt="Héctor Sanhueza"
-              />
-              <div className="ficha-papa">
-                <h5>Héctor Sanhueza</h5>
-                <p>
-                  “La receta de la vida siempre necesita un poco de paciencia y mucho cariño.”
-                </p>
-                <div className="star-rating mb-2">★★★★★</div>
-                <Link to="/Papas/Hector" className="btn btn-light mt-2">
-                  Más info
-                </Link>
-              </div>
+              {hector && (
+                <>
+                  <img
+                    src={hector.image}
+                    className="d-block w-100 rounded-top"
+                    alt={hector.name}
+                  />
+                  <div className="ficha-papa">
+                    <h5>{hector.name}</h5>
+                    <p>
+                      “La receta de la vida siempre necesita un poco de paciencia y mucho cariño.”
+                    </p>
+                    <div className="star-rating mb-2">★★★★★</div>
+                    <Link to={`/PapaDetail/${hector.id}`} className="btn btn-success">
+                      Más info
+                    </Link>
+                  </div>
+                </>
+              )}
             </div>
 
             {/* Marcelo */}
             <div className="carousel-item">
-              <img
-                src={papa2}
-                className="d-block w-100 rounded-top"
-                alt="Marcelo Fuentes"
-              />
-              <div className="ficha-papa">
-                <h5>Marcelo Fuentes</h5>
-                <p>
-                  “Si algo se rompe, se arregla; y si no se puede, se aprende de ello.”
-                </p>
-                <div className="star-rating mb-2">★★★★☆</div>
-                <Link to="/Papas/Marcelo" className="btn btn-light mt-2">
-                  Más info
-                </Link>
-              </div>
+              {marcelo && (
+                <>
+                  <img
+                    src={marcelo.image}
+                    className="d-block w-100 rounded-top"
+                    alt={marcelo.name}
+                  />
+                  <div className="ficha-papa">
+                    <h5>{marcelo.name}</h5>
+                    <p>
+                      “Si algo se rompe, se arregla; y si no se puede, se aprende de ello.”
+                    </p>
+                    <div className="star-rating mb-2">★★★★☆</div>
+                    <Link to={`/PapaDetail/${marcelo.id}`} className="btn btn-success">
+                      Más info
+                    </Link>
+                  </div>
+                </>
+              )}
             </div>
 
             {/* Ricardo */}
             <div className="carousel-item">
-              <img
-                src={papa3}
-                className="d-block w-100 rounded-top"
-                alt="Ricardo Montalvo"
-              />
-              <div className="ficha-papa">
-                <h5>Ricardo Montalvo</h5>
-                <p>
-                  “La vida se entiende mirando hacia atrás, pero se vive hacia adelante.”
-                </p>
-                <div className="star-rating mb-2">★★★★★</div>
-                <Link to="/Papas/Ricardo" className="btn btn-light mt-2">
-                  Más info
-                </Link>
-              </div>
+              {ricardo && (
+                <>
+                  <img
+                    src={ricardo.image}
+                    className="d-block w-100 rounded-top"
+                    alt={ricardo.name}
+                  />
+                  <div className="ficha-papa">
+                    <h5>{ricardo.name}</h5>
+                    <p>
+                      “La vida se entiende mirando hacia atrás, pero se vive hacia adelante.”
+                    </p>
+                    <div className="star-rating mb-2">★★★★★</div>
+                    <Link to={`/PapaDetail/${ricardo.id}`} className="btn btn-success">
+                      Más info
+                    </Link>
+                  </div>
+                </>
+              )}
             </div>
           </div>
 
