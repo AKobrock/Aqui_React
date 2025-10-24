@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/89</span>
+                <span class='fraction'>0/107</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/89</span>
+                <span class='fraction'>0/107</span>
             </div>
         
             
@@ -151,7 +151,25 @@
 <a name='L86'></a><a href='#L86'>86</a>
 <a name='L87'></a><a href='#L87'>87</a>
 <a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -239,94 +257,130 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >export default function Registro(){</span></span></span>
-<span class="cstat-no" title="statement not covered" >    return(</span>
-<span class="cstat-no" title="statement not covered" >        &lt;&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;section id="section-11" class="pb-4"&gt;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import { useState } from "react";</span></span></span>
+<span class="cstat-no" title="statement not covered" >import papahijo from "./assets/papahijopayment.webp";</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  &lt;h2 class="mb-4"&gt;Regístrate con nosotros&lt;/h2&gt;</span>
+<span class="cstat-no" title="statement not covered" >export default function Registro() {</span>
+<span class="cstat-no" title="statement not covered" >  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", password: "", newsletter: true });</span>
+<span class="cstat-no" title="statement not covered" >  const [errors, setErrors] = useState({});</span>
+<span class="cstat-no" title="statement not covered" >  const [submitted, setSubmitted] = useState(false);</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >        &lt;div class="container py-4"&gt;</span>
-<span class="cstat-no" title="statement not covered" >          &lt;div class="row g-0 align-items-center"&gt;</span>
-<span class="cstat-no" title="statement not covered" >            &lt;div class="col-lg-6 mb-5 mb-lg-0"&gt;</span>
-<span class="cstat-no" title="statement not covered" >              &lt;div class="card cascading-right bg-body-tertiary" style="backdrop-filter: blur(30px);"&gt;</span>
-<span class="cstat-no" title="statement not covered" >                &lt;div class="card-body p-5 shadow-5 text-center"&gt;</span>
-<span class="cstat-no" title="statement not covered" >                  &lt;h2 class="fw-bold mb-5"&gt;Registrate ahora&lt;/h2&gt;</span>
-<span class="cstat-no" title="statement not covered" >                  &lt;form&gt;</span>
+<span class="cstat-no" title="statement not covered" >  const validate = () =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    const e = {};</span>
+<span class="cstat-no" title="statement not covered" >    if (!form.firstName.trim()) e.firstName = "Requerido";</span>
+<span class="cstat-no" title="statement not covered" >    if (!form.lastName.trim()) e.lastName = "Requerido";</span>
+<span class="cstat-no" title="statement not covered" >    if (!form.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) e.email = "Correo inválido";</span>
+<span class="cstat-no" title="statement not covered" >    if (form.password.length &lt; 6) e.password = "La contraseña debe tener al menos 6 caracteres";</span>
+<span class="cstat-no" title="statement not covered" >    return e;</span>
+<span class="cstat-no" title="statement not covered" >  };</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >                    &lt;div class="row"&gt;</span>
-<span class="cstat-no" title="statement not covered" >                      &lt;div class="col-md-6 mb-4"&gt;</span>
-<span class="cstat-no" title="statement not covered" >                        &lt;div class="form-outline"&gt;</span>
-<span class="cstat-no" title="statement not covered" >                          &lt;input type="text" id="firstName" class="form-control" /&gt;</span>
-<span class="cstat-no" title="statement not covered" >                          &lt;label class="form-label" for="firstName"&gt;Primer nombre&lt;/label&gt;</span>
+<span class="cstat-no" title="statement not covered" >  const handleChange = (e) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    const { name, value, type, checked } = e.target;</span>
+<span class="cstat-no" title="statement not covered" >    setForm((s) =&gt; ({ ...s, [name]: type === "checkbox" ? checked : value }));</span>
+<span class="cstat-no" title="statement not covered" >  };</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  const handleSubmit = (e) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    e.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >    const eObj = validate();</span>
+<span class="cstat-no" title="statement not covered" >    setErrors(eObj);</span>
+<span class="cstat-no" title="statement not covered" >    if (Object.keys(eObj).length === 0) {</span>
+<span class="cstat-no" title="statement not covered" >      // simulated submit</span>
+<span class="cstat-no" title="statement not covered" >      setSubmitted(true);</span>
+<span class="cstat-no" title="statement not covered" >      setTimeout(() =&gt; setSubmitted(false), 3000);</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+<span class="cstat-no" title="statement not covered" >  };</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  return (</span>
+<span class="cstat-no" title="statement not covered" >    &lt;&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;section id="section-11" className="pb-4"&gt;</span>
+<span class="cstat-no" title="statement not covered" >        &lt;h2 className="mb-4"&gt;Regístrate con nosotros&lt;/h2&gt;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >        &lt;div className="container py-4"&gt;</span>
+<span class="cstat-no" title="statement not covered" >          &lt;div className="row g-0 align-items-center"&gt;</span>
+<span class="cstat-no" title="statement not covered" >            &lt;div className="col-lg-6 mb-5 mb-lg-0"&gt;</span>
+<span class="cstat-no" title="statement not covered" >              &lt;div className="card cascading-right bg-body-tertiary" style={{ backdropFilter: "blur(30px)" }}&gt;</span>
+<span class="cstat-no" title="statement not covered" >                &lt;div className="card-body p-5 shadow-5 text-center"&gt;</span>
+<span class="cstat-no" title="statement not covered" >                  &lt;h2 className="fw-bold mb-5"&gt;Registrate ahora&lt;/h2&gt;</span>
+<span class="cstat-no" title="statement not covered" >                  {submitted &amp;&amp; &lt;div className="alert alert-success"&gt;Registro simulado con éxito&lt;/div&gt;}</span>
+<span class="cstat-no" title="statement not covered" >                  &lt;form onSubmit={handleSubmit} noValidate&gt;</span>
+<span class="cstat-no" title="statement not covered" >                    &lt;div className="row"&gt;</span>
+<span class="cstat-no" title="statement not covered" >                      &lt;div className="col-md-6 mb-4"&gt;</span>
+<span class="cstat-no" title="statement not covered" >                        &lt;div className="form-outline"&gt;</span>
+<span class="cstat-no" title="statement not covered" >                          &lt;input name="firstName" value={form.firstName} onChange={handleChange} type="text" id="firstName" className={`form-control ${errors.firstName ? "is-invalid" : ""}`} /&gt;</span>
+<span class="cstat-no" title="statement not covered" >                          &lt;label className="form-label" htmlFor="firstName"&gt;Primer nombre&lt;/label&gt;</span>
+<span class="cstat-no" title="statement not covered" >                          {errors.firstName &amp;&amp; &lt;div className="invalid-feedback"&gt;{errors.firstName}&lt;/div&gt;}</span>
 <span class="cstat-no" title="statement not covered" >                        &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >                      &lt;/div&gt;</span>
-<span class="cstat-no" title="statement not covered" >                      &lt;div class="col-md-6 mb-4"&gt;</span>
-<span class="cstat-no" title="statement not covered" >                        &lt;div class="form-outline"&gt;</span>
-<span class="cstat-no" title="statement not covered" >                          &lt;input type="text" id="lastName" class="form-control" /&gt;</span>
-<span class="cstat-no" title="statement not covered" >                          &lt;label class="form-label" for="lastName"&gt;Apellidos&lt;/label&gt;</span>
+<span class="cstat-no" title="statement not covered" >                      &lt;div className="col-md-6 mb-4"&gt;</span>
+<span class="cstat-no" title="statement not covered" >                        &lt;div className="form-outline"&gt;</span>
+<span class="cstat-no" title="statement not covered" >                          &lt;input name="lastName" value={form.lastName} onChange={handleChange} type="text" id="lastName" className={`form-control ${errors.lastName ? "is-invalid" : ""}`} /&gt;</span>
+<span class="cstat-no" title="statement not covered" >                          &lt;label className="form-label" htmlFor="lastName"&gt;Apellidos&lt;/label&gt;</span>
+<span class="cstat-no" title="statement not covered" >                          {errors.lastName &amp;&amp; &lt;div className="invalid-feedback"&gt;{errors.lastName}&lt;/div&gt;}</span>
 <span class="cstat-no" title="statement not covered" >                        &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >                      &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >                    &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >                    &lt;div class="form-outline mb-4"&gt;</span>
-<span class="cstat-no" title="statement not covered" >                      &lt;input type="email" id="email" class="form-control" /&gt;</span>
-<span class="cstat-no" title="statement not covered" >                      &lt;label class="form-label" for="email"&gt;Correo electrónico&lt;/label&gt;</span>
+<span class="cstat-no" title="statement not covered" >                    &lt;div className="form-outline mb-4"&gt;</span>
+<span class="cstat-no" title="statement not covered" >                      &lt;input name="email" value={form.email} onChange={handleChange} type="email" id="email" className={`form-control ${errors.email ? "is-invalid" : ""}`} /&gt;</span>
+<span class="cstat-no" title="statement not covered" >                      &lt;label className="form-label" htmlFor="email"&gt;Correo electrónico&lt;/label&gt;</span>
+<span class="cstat-no" title="statement not covered" >                      {errors.email &amp;&amp; &lt;div className="invalid-feedback"&gt;{errors.email}&lt;/div&gt;}</span>
 <span class="cstat-no" title="statement not covered" >                    &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >                    &lt;div class="form-outline mb-4"&gt;</span>
-<span class="cstat-no" title="statement not covered" >                      &lt;input type="password" id="password" class="form-control" /&gt;</span>
-<span class="cstat-no" title="statement not covered" >                      &lt;label class="form-label" for="password"&gt;Contraseña&lt;/label&gt;</span>
+<span class="cstat-no" title="statement not covered" >                    &lt;div className="form-outline mb-4"&gt;</span>
+<span class="cstat-no" title="statement not covered" >                      &lt;input name="password" value={form.password} onChange={handleChange} type="password" id="password" className={`form-control ${errors.password ? "is-invalid" : ""}`} /&gt;</span>
+<span class="cstat-no" title="statement not covered" >                      &lt;label className="form-label" htmlFor="password"&gt;Contraseña&lt;/label&gt;</span>
+<span class="cstat-no" title="statement not covered" >                      {errors.password &amp;&amp; &lt;div className="invalid-feedback"&gt;{errors.password}&lt;/div&gt;}</span>
 <span class="cstat-no" title="statement not covered" >                    &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >                    &lt;div class="form-check d-flex justify-content-center mb-4"&gt;</span>
-<span class="cstat-no" title="statement not covered" >                      &lt;input class="form-check-input me-2" type="checkbox" id="newsletter" checked /&gt;</span>
-<span class="cstat-no" title="statement not covered" >                      &lt;label class="form-check-label" for="newsletter"&gt;</span>
+<span class="cstat-no" title="statement not covered" >                    &lt;div className="form-check d-flex justify-content-center mb-4"&gt;</span>
+<span class="cstat-no" title="statement not covered" >                      &lt;input name="newsletter" checked={form.newsletter} onChange={handleChange} className="form-check-input me-2" type="checkbox" id="newsletter" /&gt;</span>
+<span class="cstat-no" title="statement not covered" >                      &lt;label className="form-check-label" htmlFor="newsletter"&gt;</span>
 <span class="cstat-no" title="statement not covered" >                        Suscríbete a para promociones y noticias</span>
 <span class="cstat-no" title="statement not covered" >                      &lt;/label&gt;</span>
 <span class="cstat-no" title="statement not covered" >                    &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >                    &lt;button type="submit" className="btn btn-primary btn-block mb-4"&gt;Registrarse&lt;/button&gt;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >                    &lt;button type="submit" class="btn btn-primary btn-block mb-4"&gt;</span>
-<span class="cstat-no" title="statement not covered" >                      Registrarse</span>
-<span class="cstat-no" title="statement not covered" >                    &lt;/button&gt;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >     </span>
-<span class="cstat-no" title="statement not covered" >                    &lt;div class="text-center"&gt;</span>
-<span class="cstat-no" title="statement not covered" >                      &lt;p&gt;O registrate con:&lt;/p&gt;</span>
-<span class="cstat-no" title="statement not covered" >                      &lt;button type="button" class="btn btn-link btn-floating mx-1"&gt;</span>
-<span class="cstat-no" title="statement not covered" >                        &lt;i class="fab fa-facebook-f"&gt;&lt;/i&gt;</span>
-<span class="cstat-no" title="statement not covered" >                      &lt;/button&gt;</span>
-<span class="cstat-no" title="statement not covered" >                      &lt;button type="button" class="btn btn-link btn-floating mx-1"&gt;</span>
-<span class="cstat-no" title="statement not covered" >                        &lt;i class="fab fa-google"&gt;&lt;/i&gt;</span>
-<span class="cstat-no" title="statement not covered" >                      &lt;/button&gt;</span>
-<span class="cstat-no" title="statement not covered" >                    &lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >                    </span>
 <span class="cstat-no" title="statement not covered" >                  &lt;/form&gt;</span>
 <span class="cstat-no" title="statement not covered" >                &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >              &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >            &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >            &lt;div class="col-lg-6 mb-5 mb-lg-0"&gt;</span>
-<span class="cstat-no" title="statement not covered" >              &lt;img src="images/papahijopayment.webp" class="w-100 rounded-4 shadow-4" alt="Registration illustration" /&gt;</span>
+<span class="cstat-no" title="statement not covered" >            &lt;div className="col-lg-6 mb-5 mb-lg-0"&gt;</span>
+<span class="cstat-no" title="statement not covered" >              &lt;img src={papahijo} className="w-100 rounded-4 shadow-4" alt="Registration illustration" /&gt;</span>
 <span class="cstat-no" title="statement not covered" >            &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >          &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >        &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >&lt;div className="border rounded-5"&gt;</span>
-<span class="cstat-no" title="statement not covered" >  &lt;section className="w-100 p-4"&gt;</span>
-<span class="cstat-no" title="statement not covered" >    &lt;section className="text-center text-lg-start"&gt;</span>
-<span class="cstat-no" title="statement not covered" >      {/* Los estilos deben ir en un archivo CSS */}</span>
-<span class="cstat-no" title="statement not covered" >    &lt;/section&gt;</span>
-<span class="cstat-no" title="statement not covered" >  &lt;/section&gt;</span>
-<span class="cstat-no" title="statement not covered" >&lt;/div&gt;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >&lt;/section&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;/&gt;</span>
-<span class="cstat-no" title="statement not covered" >    )</span>
+<span class="cstat-no" title="statement not covered" >        &lt;div className="border rounded-5"&gt;</span>
+<span class="cstat-no" title="statement not covered" >          &lt;section className="w-100 p-4"&gt;</span>
+<span class="cstat-no" title="statement not covered" >            &lt;section className="text-center text-lg-start"&gt;</span>
+<span class="cstat-no" title="statement not covered" >              {/* Los estilos deben ir en un archivo CSS */}</span>
+<span class="cstat-no" title="statement not covered" >            &lt;/section&gt;</span>
+<span class="cstat-no" title="statement not covered" >          &lt;/section&gt;</span>
+<span class="cstat-no" title="statement not covered" >        &lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;/section&gt;</span>
+<span class="cstat-no" title="statement not covered" >    &lt;/&gt;</span>
+<span class="cstat-no" title="statement not covered" >  );</span>
 <span class="cstat-no" title="statement not covered" >}</span></pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -334,7 +388,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-10-13T19:15:44.498Z
+                at 2025-10-24T00:13:52.686Z
             </div>
         <script src="../prettify.js"></script>
         <script>
