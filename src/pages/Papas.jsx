@@ -1,16 +1,22 @@
-import { Fragment, useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-
+import PapaCard from '../components/PapaCard/PapaCard';
+import Loading from '../components/Loading/Loading';
+import { getPapas } from '../services/papaService';
 
 function Papas() {
   const [papas, setPapas] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/papas.json')
-      .then(response => response.json())
-      .then(data => setPapas(data.papas))
-      .catch(error => console.error('Error:', error));
+    getPapas()
+      .then(data => {
+        setPapas(data.papas);
+        setLoading(false);
+      });
   }, []);
+
+  if (loading) return <Loading />;
 
   return (
     <>

@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { LoginContext } from "./LoginContext"
+import { LoginContext } from "../context/LoginContext"
 
 
 function Login(){
