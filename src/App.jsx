@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { LoginProvider } from './context/LoginContext';
-import Navbar from './components/Navbar/Navbar';
+import Navbar from './components/navbar';
 import Inicio from './pages/Inicio';
 import Papas from './pages/Papas';
 import PapaDetail from './pages/PapaDetail';
@@ -11,7 +11,7 @@ import Perfil from './pages/Perfil';
 import Nosotros from './pages/Nosotros';
 import Contacto from './pages/Contacto';
 import Payment from './pages/Payment';
-import './App.css';
+import './styles/App.css';
 
 function App() {
   return (

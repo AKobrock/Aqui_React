@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './PapaCard.css';
+import '../styles/PapaCard.css';
 
 function PapaCard({ papa }) {
   return (

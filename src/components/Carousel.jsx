@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './Carousel.css';
+import '../styles/Carousel.css';
 
 function Carousel({ papas }) {
   return (

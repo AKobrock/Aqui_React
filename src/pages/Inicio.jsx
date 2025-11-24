@@ -1,11 +1,11 @@
 import { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import portada1 from "./assets/portada_2.png";
-import Carousel from '../components/Carousel/Carousel';
-import Loading from '../components/Loading/Loading';
+import Carousel from '../components/Carousel';
+import Loading from '../components/Loading';
 import { getPapas } from '../services/PapaService';
 
-import "./Inicio.css";
+import '../styles/Inicio.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
@@ -37,7 +37,7 @@ function Inicio() {
         <div className="texto-explicativo text-center my-4">
           <h1>¡Aquí Papá!</h1>
           <p>
-            Somos una empresa única y cercana que ofrece la renta de figuras
+            Somos una empresa única y cercana que ofrece
             paternas para quienes necesiten apoyo, compañía y orientación en
             diferentes momentos de su vida. Desde estar presente en una graduación,
             enseñar a conducir, brindar consejos antes de un examen importante o
