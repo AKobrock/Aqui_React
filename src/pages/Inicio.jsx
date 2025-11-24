@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import portada1 from "./assets/portada_2.png";
 import Carousel from '../components/Carousel/Carousel';
 import Loading from '../components/Loading/Loading';
-import { getPapas } from '../services/papaService';
+import { getPapas } from '../services/PapaService';
 
 import "./Inicio.css";
 import "bootstrap/dist/css/bootstrap.min.css";

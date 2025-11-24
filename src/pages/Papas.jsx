@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import PapaCard from '../components/PapaCard/PapaCard';
 import Loading from '../components/Loading/Loading';
-import { getPapas } from '../services/papaService';
+import { getPapas } from '../services/PapaService';
 
 function Papas() {
   const [papas, setPapas] = useState([]);
