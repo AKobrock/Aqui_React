@@ -1,5 +1,4 @@
 import { useState } from "react";
-import papahijo from "./assets/papahijopayment.webp";
 
 export default function Registro() {
   const [form, setForm] = useState({ firstName: "", lastName: "", email: "", password: "", newsletter: true });
@@ -89,7 +88,7 @@ export default function Registro() {
             </div>
 
             <div className="col-lg-6 mb-5 mb-lg-0">
-              <img src={papahijo} className="w-100 rounded-4 shadow-4" alt="Registration illustration" />
+              <img src="/assets/papahijopayment.webp" className="w-100 rounded-4 shadow-4" alt="Registration illustration" />
             </div>
           </div>
         </div>
