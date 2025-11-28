@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom'; // Se importa useNavigate
 
 export default function Sesion() {
   const [form, setForm] = useState({ email: "", password: "", remember: false });
   const [errors, setErrors] = useState({});
-  const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate(); // Se inicializa para poder usarlo
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -22,8 +23,8 @@ export default function Sesion() {
     const e = validate();
     setErrors(e);
     if (Object.keys(e).length === 0) {
-      setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 2500);
+      // En lugar de mostrar una alerta, ahora redirige a la página de perfil
+      navigate(`/perfil?email=${form.email}`);
     }
   };
 
@@ -36,7 +37,6 @@ export default function Sesion() {
               <div className="card cascading-right bg-body-tertiary" style={{ backdropFilter: "blur(30px)" }}>
                 <div className="card-body p-5 shadow-5 text-center">
                   <h3 className="mb-4">Ingresa a tu cuenta</h3>
-                  {submitted && <div className="alert alert-success">Ingreso simulado</div>}
                   <form id="loginForm" onSubmit={handleSubmit} noValidate>
                     <div className="form-outline mb-4">
                       <input
@@ -81,10 +81,10 @@ export default function Sesion() {
 
                   <hr className="my-4" />
 
-                  <button className="btn btn-lg btn-block w-100 mb-2 text-white" type="button">
+                  <button className="btn btn-lg btn-block w-100 mb-2 text-white" type="button" style={{backgroundColor: '#dd4b39'}}>
                     <i className="fab fa-google me-2"></i> Ingresa con Google
                   </button>
-                  <button className="btn btn-lg btn-block w-100 text-white" type="button">
+                  <button className="btn btn-lg btn-block w-100 text-white" type="button" style={{backgroundColor: '#3b5998'}}>
                     <i className="fab fa-facebook-f me-2"></i> Ingresa con Facebook
                   </button>
 

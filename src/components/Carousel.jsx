@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './Carousel.css';
+import '../styles/Carousel.css';
 
 function Carousel({ papas }) {
   return (
@@ -12,7 +12,23 @@ function Carousel({ papas }) {
               className="d-block w-100" 
               alt={papa.name}
             />
-            <div className="carousel-caption">
+            <div 
+              className="carousel-caption d-block" 
+              style={{
+                backgroundColor: 'rgba(0, 0, 0, 0.6)',
+                borderRadius: '10px',
+                padding: '20px',
+                left: '15%',
+                right: '15%',
+                bottom: '20px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                height: '230px',
+                color: 'white'
+              }}
+            >
               <h5>{papa.name}</h5>
               <p>{papa.description}</p>
               <Link 

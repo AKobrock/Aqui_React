@@ -34,8 +34,8 @@ function Contacto() {
         <div className="container mt-5">
             <h2 className="text-center mb-4">Contáctanos</h2>
 
-                    <div className="row justify-content-center">
-                <div className="col-12" style={{ width: 800, maxWidth: '100%', margin: "0 auto" }}>
+            <div className="row justify-content-center">
+                <div className="col-lg-8 col-md-10">
                     <form onSubmit={handleSubmit} noValidate>
                         <div className="mb-3">
                             <label htmlFor="nombre" className="form-label">Nombre</label>
@@ -56,7 +56,7 @@ function Contacto() {
                             {errors.mensaje && <div className="invalid-feedback">{errors.mensaje}</div>}
                         </div>
 
-                        <button type="submit" className="btn btn-primary">Enviar</button>
+                        <button type="submit" className="btn btn-primary w-100">Enviar</button>
                     </form>
                 </div>
             </div>

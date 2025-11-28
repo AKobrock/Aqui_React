@@ -1,0 +1,61 @@
+.franja-portada {
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--color-accent-dark);
+}
+
+.franja-inner {
+  position: relative;
+  width: 100%;
+  height: 250px; /* Altura de la franja */
+}
+
+.imagen-portada {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* La imagen cubre todo el espacio, puede recortarse */
+  object-position: center 30%; /* Centra la imagen y la sube un poco */
+}
+
+.texto-explicativo {
+  padding: 0 1rem;
+}
+
+.texto-explicativo h1 {
+  color: var(--color-text);
+}
+
+/* --- Estilos para la Sección de Descuentos -- */
+
+.descuentos-section {
+  background-color: #f8f9fa;
+}
+
+.descuentos-section h2 {
+  color: var(--color-text);
+  font-weight: bold;
+}
+
+.beneficio-card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-accent-dark) !important;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.beneficio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+.beneficio-card .card-title {
+  color: var(--color-accent-dark);
+  font-weight: 600;
+}
+
+.site-footer {
+  background-color: var(--color-accent-dark);
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
+  margin-top: 4rem; /* Se añade un margen para separar del contenido */
+}

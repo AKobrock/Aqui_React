@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import Loading from '../components/Loading/Loading';
-import { getPapaById } from '../services/papaService';
+import Loading from '../components/Loading';
+import { getPapaById } from '../services/PapaService';
 
 export default function PapaDetail() {
   const { id } = useParams();
@@ -29,7 +29,7 @@ export default function PapaDetail() {
             className="img-fluid rounded-4 shadow-sm"
           />
         </div>
-        <div className="col-md-6">
+        <div className="col-md-6 d-flex flex-column">
           <h2>{papa.name}</h2>
           <p>{papa.description}</p>
           <ul className="list-unstyled">
@@ -40,8 +40,13 @@ export default function PapaDetail() {
             <li><strong>Hijos:</strong> {papa.children}</li>
             <li><strong>Hobbies:</strong> {papa.hobbies.join(', ')}</li>
           </ul>
-          <div className="price-tag">
+          <div className="price-tag mt-auto">
             <h3>{papa.price_display}</h3>
+          </div>
+          <div className="mt-3">
+            <Link to={`/payment?id=${papa.id}`} className="btn btn-success btn-lg w-100">
+              ¡Arrendar ahora!
+            </Link>
           </div>
         </div>
       </div>

@@ -1,0 +1,50 @@
+.papa-card {
+  transition: transform 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: #FEFAE0;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.papa-card:hover {
+  transform: translateY(-5px);
+}
+
+.papa-card-img-top {
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 0.5em 0.5em 0 0;
+}
+
+.papa-card-body {
+  padding: 1rem;
+  color: #606C38;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; 
+}
+
+.papa-card-title {
+  font-weight: bold;
+  color: #283618;
+}
+
+.papa-card-text {
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* Limit text to a few lines using -webkit-line-clamp */
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Adjust this number to show more or less lines */
+  -webkit-box-orient: vertical;  
+}
+
+.papa-price {
+  color: #28a745;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-top: auto; /* This is the key to push it to the bottom */
+}

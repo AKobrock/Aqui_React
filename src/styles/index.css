@@ -1,0 +1,167 @@
+/* Import Google Fonts used in the project (must be at file top) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat+Alternates:wght@700&display=swap');
+
+/* Variables globales */
+:root {
+  --color-bg: #FEFAE0;
+  --color-text: #283618;
+  --color-accent: #DDA15E;
+  --color-accent-dark: #606C38;
+  --color-link: #646cff;
+  --color-link-hover: #535bf2;
+  --color-navbar-link: #DDA15E;
+  --color-navbar-hover: #606C38;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body, #root {
+  background-color: var(--color-bg) !important;
+  color: var(--color-text) !important;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Montserrat Alternates', 'Inter', system-ui, sans-serif;
+}
+
+body {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  /* Se eliminan las propiedades display: flex y place-items: center que rompían el carrusel */
+}
+
+/* --- General Styles --- */
+
+/* Enlaces */
+a {
+  font-weight: 500;
+  color: var(--color-accent-dark);
+  text-decoration: inherit;
+}
+a:hover {
+  color: var(--color-accent);
+}
+
+/* Navbar */
+.navbar .nav-link {
+  color: var(--color-navbar-link) !important;
+  font-weight: 500;
+  text-decoration: none;
+}
+.navbar .nav-link:hover {
+  background-color: var(--color-navbar-hover) !important;
+  color: var(--color-navbar-link) !important;
+}
+.navbar .navbar-brand {
+  font-family: 'Montserrat Alternates', 'Inter', sans-serif;
+  font-weight: 700;
+  color: var(--color-navbar-link) !important;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+
+/* --- Forms & Buttons --- */
+
+.form-control {
+  background-color: #fdf8e6 !important;
+  border-color: var(--color-accent-dark) !important;
+  color: var(--color-text) !important;
+}
+
+.form-control:focus {
+  background-color: #fdf8e6 !important;
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 0 0 0.25rem rgba(96, 108, 56, 0.25);
+}
+
+.btn-primary {
+  background-color: var(--color-accent-dark) !important;
+  border-color: var(--color-accent-dark) !important;
+  color: var(--color-bg) !important;
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background-color: #4e5a2e !important;
+  border-color: #4e5a2e !important;
+}
+
+
+/* --- Payment Page Specific Styles --- */
+
+.payment-container {
+  padding-top: 90px;
+  padding-bottom: 50px;
+  width: 100%;
+}
+
+.payment-container h1 {
+  color: var(--color-text);
+  font-weight: bold;
+}
+
+.payment-summary-card .card-body {
+  background-color: #fdf8e6;
+}
+
+.payment-success-alert {
+  background-color: #d4edda;
+  color: #155724;
+  border-color: #c3e6cb;
+  padding: 3rem;
+  margin-top: 5rem;
+  border-radius: 10px;
+}
+
+
+/* --- Default/Fallback Styles --- */
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: var(--color-link);
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-bg: #ffffff;
+    --color-text: #213547;
+    --color-link: #747bff;
+    --color-link-hover: #535bf2;
+  }
+  body, html, #root {
+    background-color: var(--color-bg) !important;
+    color: var(--color-text) !important;
+  }
+  a:hover {
+    color: var(--color-link);
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}

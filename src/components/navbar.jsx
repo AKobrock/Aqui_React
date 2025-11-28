@@ -35,9 +35,8 @@ function Navbar() {
         </div>
 
         <div className="d-flex align-items-center ms-auto">
-          {/* Right-side: 'Ingresar' and 'Registro' both styled like nav tabs */}
-          <Link to="/login" className="nav-link text-light me-2">Ingresar</Link>
-          <Link to="/Registro" className="nav-link text-light">Registro</Link>
+          <Link to="/sesion" className="nav-link text-light me-2">Ingresar</Link>
+          <Link to="/registro" className="nav-link text-light">Registro</Link>
         </div>
       </div>
     </nav>

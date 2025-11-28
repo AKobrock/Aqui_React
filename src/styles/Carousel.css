@@ -1,0 +1,51 @@
+#carouselPapas .carousel-item {
+  height: 500px;
+}
+
+#carouselPapas .carousel-item img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+#carouselPapas .carousel-caption {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  padding: 20px;
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  bottom: 20px;
+  display: flex !important; /* Se añade !important para forzar su visibilidad */
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 230px;
+  justify-content: space-between;
+  color: white; /* Se asegura que todo el texto sea blanco */
+}
+
+#carouselPapas .carousel-caption h5 {
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: white;
+}
+
+#carouselPapas .carousel-caption p {
+  flex-grow: 1;
+  margin: 0 0 10px 0;
+  overflow: hidden;
+  color: white;
+}
+
+#carouselPapas .carousel-caption .btn-success {
+  color: white !important; /* Se asegura que el texto del botón sea blanco */
+  background-color: #28a745; /* Se restaura el color verde original */
+  border-color: #28a745;
+}
+
+#carouselPapas .carousel-caption .btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
