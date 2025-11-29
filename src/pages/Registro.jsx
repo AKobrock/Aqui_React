@@ -1,4 +1,5 @@
 import { useState } from "react";
+import papahijo from "../assets/papahijopayment.webp"; // Se importa la imagen
 
 export default function Registro() {
   const [form, setForm] = useState({ firstName: "", lastName: "", email: "", password: "", newsletter: true });
@@ -32,73 +33,52 @@ export default function Registro() {
 
   return (
     <>
-      <section id="section-11" className="pb-4">
-        <h2 className="mb-4">Regístrate con nosotros</h2>
-
-        <div className="container py-4">
-          <div className="row g-0 align-items-center">
-            <div className="col-lg-6 mb-5 mb-lg-0">
-              <div className="card cascading-right bg-body-tertiary" style={{ backdropFilter: "blur(30px)" }}>
-                <div className="card-body p-5 shadow-5 text-center">
-                  <h2 className="fw-bold mb-5">Registrate ahora</h2>
-                  {submitted && <div className="alert alert-success">Registro simulado con éxito</div>}
-                  <form onSubmit={handleSubmit} noValidate>
-                    <div className="row">
-                      <div className="col-md-6 mb-4">
-                        <div className="form-outline">
-                          <input name="firstName" value={form.firstName} onChange={handleChange} type="text" id="firstName" className={`form-control ${errors.firstName ? "is-invalid" : ""}`} />
-                          <label className="form-label" htmlFor="firstName">Primer nombre</label>
-                          {errors.firstName && <div className="invalid-feedback">{errors.firstName}</div>}
-                        </div>
-                      </div>
-                      <div className="col-md-6 mb-4">
-                        <div className="form-outline">
-                          <input name="lastName" value={form.lastName} onChange={handleChange} type="text" id="lastName" className={`form-control ${errors.lastName ? "is-invalid" : ""}`} />
-                          <label className="form-label" htmlFor="lastName">Apellidos</label>
-                          {errors.lastName && <div className="invalid-feedback">{errors.lastName}</div>}
-                        </div>
+      <section id="section-11" className="container py-5">
+        <div className="row g-0 align-items-center justify-content-center">
+          <div className="col-lg-6 mb-5 mb-lg-0">
+            <div className="card cascading-right bg-body-tertiary" style={{ backdropFilter: "blur(30px)" }}>
+              <div className="card-body p-5 shadow-5 text-center">
+                <h2 className="fw-bold mb-5">Regístrate ahora</h2>
+                {submitted && <div className="alert alert-success">Registro simulado con éxito</div>}
+                <form onSubmit={handleSubmit} noValidate>
+                  <div className="row">
+                    <div className="col-md-6 mb-4">
+                      <div className="form-outline">
+                        <input name="firstName" value={form.firstName} onChange={handleChange} type="text" id="firstName" className={`form-control ${errors.firstName ? "is-invalid" : ""}`} placeholder="Primer nombre" />
                       </div>
                     </div>
-
-                    <div className="form-outline mb-4">
-                      <input name="email" value={form.email} onChange={handleChange} type="email" id="email" className={`form-control ${errors.email ? "is-invalid" : ""}`} />
-                      <label className="form-label" htmlFor="email">Correo electrónico</label>
-                      {errors.email && <div className="invalid-feedback">{errors.email}</div>}
+                    <div className="col-md-6 mb-4">
+                      <div className="form-outline">
+                        <input name="lastName" value={form.lastName} onChange={handleChange} type="text" id="lastName" className={`form-control ${errors.lastName ? "is-invalid" : ""}`} placeholder="Apellidos" />
+                      </div>
                     </div>
+                  </div>
 
-                    <div className="form-outline mb-4">
-                      <input name="password" value={form.password} onChange={handleChange} type="password" id="password" className={`form-control ${errors.password ? "is-invalid" : ""}`} />
-                      <label className="form-label" htmlFor="password">Contraseña</label>
-                      {errors.password && <div className="invalid-feedback">{errors.password}</div>}
-                    </div>
+                  <div className="form-outline mb-4">
+                    <input name="email" value={form.email} onChange={handleChange} type="email" id="email" className={`form-control ${errors.email ? "is-invalid" : ""}`} placeholder="Correo electrónico"/>
+                  </div>
 
-                    <div className="form-check d-flex justify-content-center mb-4">
-                      <input name="newsletter" checked={form.newsletter} onChange={handleChange} className="form-check-input me-2" type="checkbox" id="newsletter" />
-                      <label className="form-check-label" htmlFor="newsletter">
-                        Suscríbete a para promociones y noticias
-                      </label>
-                    </div>
+                  <div className="form-outline mb-4">
+                    <input name="password" value={form.password} onChange={handleChange} type="password" id="password" className={`form-control ${errors.password ? "is-invalid" : ""}`} placeholder="Contraseña" />
+                  </div>
 
-                    <button type="submit" className="btn btn-primary btn-block mb-4">Registrarse</button>
+                  <div className="form-check d-flex justify-content-center mb-4">
+                    <input name="newsletter" checked={form.newsletter} onChange={handleChange} className="form-check-input me-2" type="checkbox" id="newsletter" />
+                    <label className="form-check-label" htmlFor="newsletter">
+                      Suscríbete para recibir promociones y noticias
+                    </label>
+                  </div>
 
-                    
-                  </form>
-                </div>
+                  <button type="submit" className="btn btn-primary btn-block mb-4 w-100">Registrarse</button>
+
+                </form>
               </div>
             </div>
-
-            <div className="col-lg-6 mb-5 mb-lg-0">
-              <img src="/assets/papahijopayment.webp" className="w-100 rounded-4 shadow-4" alt="Registration illustration" />
-            </div>
           </div>
-        </div>
 
-        <div className="border rounded-5">
-          <section className="w-100 p-4">
-            <section className="text-center text-lg-start">
-              {/* Los estilos deben ir en un archivo CSS */}
-            </section>
-          </section>
+          <div className="col-lg-6 mb-5 mb-lg-0 d-none d-lg-block">
+            <img src={papahijo} className="w-100 rounded-4 shadow-4" alt="Hombre e hijo sentados en un sofá" />
+          </div>
         </div>
       </section>
     </>

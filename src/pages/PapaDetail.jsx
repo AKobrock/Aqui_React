@@ -17,10 +17,10 @@ export default function PapaDetail() {
   }, [id]);
 
   if (loading) return <Loading />;
-  if (!papa) return <div className="container mt-4">Papá no encontrado</div>;
+  if (!papa) return <div className="container py-5">Papá no encontrado</div>;
 
   return (
-    <div className="container mt-4">
+    <div className="container py-5"> {/* Se aumenta el espaciado vertical a py-5 */}
       <div className="row">
         <div className="col-md-6">
           <img 
