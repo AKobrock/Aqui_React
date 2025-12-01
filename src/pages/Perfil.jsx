@@ -31,6 +31,7 @@ export default function Perfil() {
   const handleOpenCamera = async () => {
     setIsCameraOpen(true);
     try {
+        //Aqui se usa  la API  MediaDevices para acceder a la cámara
       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
@@ -53,12 +54,13 @@ export default function Perfil() {
     const video = videoRef.current;
     const canvas = canvasRef.current;
     if (video && canvas) {
+        //Aqui se usa la API canvas para poder capturar la foto
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
       const context = canvas.getContext('2d');
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
-      const photo = canvas.toDataURL('image/png');
-      setProfileImage(photo);
+      const photo = canvas.toDataURL('image/png'); //Se convierte en imagen
+      setProfileImage(photo); //Se guarda en el estado de React
       handleCloseCamera();
     }
   };
