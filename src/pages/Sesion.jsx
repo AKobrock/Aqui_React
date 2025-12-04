@@ -1,99 +1,73 @@
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom'; // Se importa useNavigate
+import { useNavigate } from "react-router-dom";
+import { useLogin } from "../context/LoginContext"; // Hook de login
+import { loginUserService } from "../services/AuthService";
 
-export default function Sesion() {
-  const [form, setForm] = useState({ email: "", password: "", remember: false });
-  const [errors, setErrors] = useState({});
-  const navigate = useNavigate(); // Se inicializa para poder usarlo
+function Sesion() {
+  const [form, setForm] = useState({ email: "", password: "" });
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  const { loginUser } = useLogin(); // contexto del usuario
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setForm((s) => ({ ...s, [name]: type === "checkbox" ? checked : value }));
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const validate = () => {
-    const e = {};
-    if (!form.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) e.email = "Correo inválido";
-    if (!form.password || form.password.length < 6) e.password = "Contraseña mínima 6 caracteres";
-    return e;
-  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(null);
 
-  const handleSubmit = (ev) => {
-    ev.preventDefault();
-    const e = validate();
-    setErrors(e);
-    if (Object.keys(e).length === 0) {
-      // En lugar de mostrar una alerta, ahora redirige a la página de perfil
-      navigate(`/perfil?email=${form.email}`);
+    try {
+      // 🔵 Llamar al backend
+      const data = await loginUserService(form);
+
+      // 🔵 Guardar en contexto global
+      loginUser(data.user, data.token);
+
+      alert("¡Bienvenido!");
+
+      // Redirigir
+      navigate("/perfil");
+    } catch (err) {
+      console.error(err);
+      setError("Credenciales incorrectas.");
     }
   };
 
   return (
-    <>
-      <section id="section-11" className="pb-4">
-        <div className="container py-4">
-          <div className="row g-0 align-items-center justify-content-center">
-            <div className="col-lg-8 mb-5 mb-lg-0">
-              <div className="card cascading-right bg-body-tertiary" style={{ backdropFilter: "blur(30px)" }}>
-                <div className="card-body p-5 shadow-5 text-center">
-                  <h3 className="mb-4">Ingresa a tu cuenta</h3>
-                  <form id="loginForm" onSubmit={handleSubmit} noValidate>
-                    <div className="form-outline mb-4">
-                      <input
-                        name="email"
-                        value={form.email}
-                        onChange={handleChange}
-                        type="email"
-                        id="typeEmailX-2"
-                        className={`form-control form-control-lg ${errors.email ? "is-invalid" : ""}`}
-                        placeholder="Email"
-                      />
-                      {errors.email && <div className="invalid-feedback">{errors.email}</div>}
-                    </div>
+    <div className="container mt-5 pt-5">
+      <h2 className="text-center mb-4">Iniciar sesión</h2>
 
-                    <div className="form-outline mb-4">
-                      <input
-                        name="password"
-                        value={form.password}
-                        onChange={handleChange}
-                        type="password"
-                        id="typePasswordX-2"
-                        className={`form-control form-control-lg ${errors.password ? "is-invalid" : ""}`}
-                        placeholder="Password"
-                      />
-                      {errors.password && <div className="invalid-feedback">{errors.password}</div>}
-                    </div>
+      {error && <div className="alert alert-danger">{error}</div>}
 
-                    <div className="form-check d-flex justify-content-center mb-4">
-                      <input
-                        name="remember"
-                        checked={form.remember}
-                        onChange={handleChange}
-                        className="form-check-input me-2"
-                        type="checkbox"
-                        id="form1Example3"
-                      />
-                      <label className="form-check-label" htmlFor="form1Example3">Recordar la contraseña</label>
-                    </div>
+      <form onSubmit={handleSubmit} className="col-md-6 mx-auto">
+        <label>Email:</label>
+        <input
+          type="email"
+          name="email"
+          className="form-control"
+          value={form.email}
+          onChange={handleChange}
+          required
+        />
 
-                    <button className="btn btn-primary btn-block mb-4 w-100" type="submit">Ingresar</button>
-                  </form>
+        <label className="mt-3">Contraseña:</label>
+        <input
+          type="password"
+          name="password"
+          className="form-control"
+          value={form.password}
+          onChange={handleChange}
+          required
+        />
 
-                  <hr className="my-4" />
-
-                  <button className="btn btn-lg btn-block w-100 mb-2 text-white" type="button" style={{backgroundColor: '#dd4b39'}}>
-                    <i className="fab fa-google me-2"></i> Ingresa con Google
-                  </button>
-                  <button className="btn btn-lg btn-block w-100 text-white" type="button" style={{backgroundColor: '#3b5998'}}>
-                    <i className="fab fa-facebook-f me-2"></i> Ingresa con Facebook
-                  </button>
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
+        <button type="submit" className="btn btn-primary w-100 mt-4">
+          Iniciar sesión
+        </button>
+      </form>
+    </div>
   );
 }
+
+export default Sesion;

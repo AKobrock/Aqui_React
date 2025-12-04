@@ -1,39 +1,66 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
-const AdminAuthContext = createContext();
+// ============================================
+// 🔐 Función para verificar si un JWT expiró
+// ============================================
+function isTokenExpired(token) {
+  try {
+    const [, payload] = token.split(".");
+    const data = JSON.parse(atob(payload)); // decodifica el JWT
+    const now = Date.now() / 1000;
+
+    return data.exp < now; // true → expiró
+  } catch (e) {
+    return true; // si falla, tratamos como expirado
+  }
+}
+
+export const AdminAuthContext = createContext();
 
 export function AdminAuthProvider({ children }) {
-  const [admin, setAdmin] = useState(null);
+  const [admin, setAdmin] = useState(
+    JSON.parse(localStorage.getItem("admin")) || null
+  );
+  const [token, setToken] = useState(localStorage.getItem("adminToken") || null);
 
-  // Cargar admin desde localStorage cuando inicia la app
+  // ============================================
+  // 🔄 Verificar expiración del token al cargar app
+  // ============================================
   useEffect(() => {
-    const savedAdmin = localStorage.getItem("adminData");
-    if (savedAdmin) setAdmin(JSON.parse(savedAdmin));
+    if (token && isTokenExpired(token)) {
+      logoutAdmin();
+    }
   }, []);
 
-  // Login Admin
-  const loginAdmin = (adminData, token) => {
-    localStorage.setItem("adminToken", token);
-    localStorage.setItem("adminData", JSON.stringify(adminData));
+  // ============================================
+  // 🟢 LOGIN ADMIN
+  // ============================================
+  const loginAdmin = (adminData, tokenData) => {
     setAdmin(adminData);
+    setToken(tokenData);
+
+    localStorage.setItem("admin", JSON.stringify(adminData));
+    localStorage.setItem("adminToken", tokenData);
   };
 
-  // Logout admin
+  // ============================================
+  // 🔴 LOGOUT ADMIN
+  // ============================================
   const logoutAdmin = () => {
-    localStorage.removeItem("adminToken");
-    localStorage.removeItem("adminData");
     setAdmin(null);
+    setToken(null);
+    localStorage.removeItem("admin");
+    localStorage.removeItem("adminToken");
   };
 
   return (
-    <AdminAuthContext.Provider value={{ admin, loginAdmin, logoutAdmin }}>
+    <AdminAuthContext.Provider value={{ admin, token, loginAdmin, logoutAdmin }}>
       {children}
     </AdminAuthContext.Provider>
   );
 }
 
-export function useAdminAuth() {
-  return useContext(AdminAuthContext);
-}
+export const useAdminAuth = () => useContext(AdminAuthContext);
+
 
 //Guarda al administrador en localStorage

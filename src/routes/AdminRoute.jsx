@@ -2,11 +2,11 @@ import { Navigate } from "react-router-dom";
 import { useAdminAuth } from "../context/AdminAuthContext";
 
 export default function AdminRoute({ children }) {
-  const { admin } = useAdminAuth();
+  const { admin, token } = useAdminAuth();
 
-  if (!admin) {
-    return <Navigate to="/admin-login" replace />;
-  }
+  // Si no hay token o admin → redirigir
+  if (!token || !admin) return <Navigate to="/admin/login" replace />;
 
   return children;
 }
+

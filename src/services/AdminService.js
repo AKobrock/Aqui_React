@@ -1,13 +1,12 @@
-const API_URL = "http://localhost:8080/api/v1/admins";
-
-export const loginAdminService = async ({ email, password }) => {
-  const res = await fetch(`${API_URL}/login`, {
+export async function loginAdminService(credentials) {
+  const response = await fetch("http://localhost:8080/api/v1/admins/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify(credentials),
   });
 
-  if (!res.ok) throw new Error("Login incorrecto");
+  if (!response.ok) throw new Error("Error en login");
 
-  return res.json();
-};
+  return response.json();
+}
+

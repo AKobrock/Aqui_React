@@ -6,8 +6,9 @@ import { useAdminAuth } from "../../context/AdminAuthContext";
 function AdminLogin() {
   const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState(null);
+
   const navigate = useNavigate();
-  const { loginAdmin } = useAdminAuth();
+  const { loginAdmin } = useAdminAuth();  // contexto admin
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,22 +20,33 @@ function AdminLogin() {
     setError(null);
 
     try {
+      // Llama a tu backend
       const data = await loginAdminService(form);
 
-      // Si viene como APIResponse
-      const adminData = data.data || data;
+      /** 
+       * Esperamos estructura:
+       * {
+       *    token: "...",
+       *    admin: { id, email, username, rol }
+       * }
+       */
+      const { token, admin } = data;
 
-      if (adminData.rol !== "ADMIN") {
+      // Validar rol
+      if (!admin || admin.rol !== "ADMIN") {
         setError("No tienes permisos de administrador.");
         return;
       }
 
-      loginAdmin(adminData);
+      // Guardar en contexto global
+      loginAdmin(admin, token);
+
+      // Redirigir al dashboard
       navigate("/admin");
-      
+
     } catch (err) {
       console.error(err);
-      setError("Credenciales incorrectas.");
+      setError("Credenciales incorrectas o servidor no responde.");
     }
   };
 
@@ -45,21 +57,23 @@ function AdminLogin() {
       {error && <div className="alert alert-danger">{error}</div>}
 
       <form onSubmit={handleSubmit} className="col-md-4 mx-auto">
-        
+
         <label className="form-label">Correo</label>
-        <input 
+        <input
           type="email"
           name="email"
           className="form-control mb-3"
+          value={form.email}
           onChange={handleChange}
           required
         />
 
         <label className="form-label">Contraseña</label>
-        <input 
+        <input
           type="password"
           name="password"
           className="form-control mb-3"
+          value={form.password}
           onChange={handleChange}
           required
         />
