@@ -15,6 +15,7 @@ export const getPapaByIdBackend = async (uuid) => {
   if (!response.ok) {
     throw new Error("Error al obtener el papá");
   }
+  
   return response.json();
 };
 

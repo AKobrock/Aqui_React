@@ -1,86 +1,137 @@
 import { useState } from "react";
-import papahijo from "../assets/papahijopayment.webp"; // Se importa la imagen
+import papahijo from "../assets/papahijopayment.webp";
+import { registerUserService } from "../services/UserService";
 
 export default function Registro() {
-  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", password: "", newsletter: true });
+  const [form, setForm] = useState({
+    username: "",
+    lastname: "",
+    rut: "",
+    address: "",
+    email: "",
+    password: "",
+    active: true
+  });
+
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
 
   const validate = () => {
     const e = {};
-    if (!form.firstName.trim()) e.firstName = "Requerido";
-    if (!form.lastName.trim()) e.lastName = "Requerido";
+    if (!form.username.trim()) e.username = "Requerido";
+    if (!form.lastname.trim()) e.lastname = "Requerido";
+    if (!form.rut.trim()) e.rut = "Requerido";
+    if (!form.address.trim()) e.address = "Requerido";
     if (!form.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) e.email = "Correo inválido";
     if (form.password.length < 6) e.password = "La contraseña debe tener al menos 6 caracteres";
     return e;
   };
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setForm((s) => ({ ...s, [name]: type === "checkbox" ? checked : value }));
+    const { name, value } = e.target;
+    setForm((s) => ({ ...s, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const eObj = validate();
     setErrors(eObj);
-    if (Object.keys(eObj).length === 0) {
-      // simulated submit
+
+    if (Object.keys(eObj).length > 0) return;
+
+    console.log("📤 ENVIANDO AL BACKEND:", form);
+
+    try {
+      const response = await registerUserService(form);
+      console.log("✅ Registrado correctamente:", response);
+
       setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 3000);
+      setTimeout(() => setSubmitted(false), 4000);
+
+    } catch (err) {
+      console.error("❌ Error al registrar:", err);
+      alert("Error al registrar usuario: " + err.message);
     }
   };
 
   return (
-    <>
-      <section id="section-11" className="container py-5">
-        <div className="row g-0 align-items-center justify-content-center">
-          <div className="col-lg-6 mb-5 mb-lg-0">
-            <div className="card cascading-right bg-body-tertiary" style={{ backdropFilter: "blur(30px)" }}>
-              <div className="card-body p-5 shadow-5 text-center">
-                <h2 className="fw-bold mb-5">Regístrate ahora</h2>
-                {submitted && <div className="alert alert-success">Registro simulado con éxito</div>}
-                <form onSubmit={handleSubmit} noValidate>
-                  <div className="row">
-                    <div className="col-md-6 mb-4">
-                      <div className="form-outline">
-                        <input name="firstName" value={form.firstName} onChange={handleChange} type="text" id="firstName" className={`form-control ${errors.firstName ? "is-invalid" : ""}`} placeholder="Primer nombre" />
-                      </div>
-                    </div>
-                    <div className="col-md-6 mb-4">
-                      <div className="form-outline">
-                        <input name="lastName" value={form.lastName} onChange={handleChange} type="text" id="lastName" className={`form-control ${errors.lastName ? "is-invalid" : ""}`} placeholder="Apellidos" />
-                      </div>
-                    </div>
-                  </div>
+    <section className="container py-5">
+      <div className="row g-0 justify-content-center align-items-center">
 
-                  <div className="form-outline mb-4">
-                    <input name="email" value={form.email} onChange={handleChange} type="email" id="email" className={`form-control ${errors.email ? "is-invalid" : ""}`} placeholder="Correo electrónico"/>
-                  </div>
+        <div className="col-lg-6 card p-5 shadow-5 bg-body-tertiary">
+          <h2 className="fw-bold mb-4 text-center">Regístrate ahora</h2>
 
-                  <div className="form-outline mb-4">
-                    <input name="password" value={form.password} onChange={handleChange} type="password" id="password" className={`form-control ${errors.password ? "is-invalid" : ""}`} placeholder="Contraseña" />
-                  </div>
+          {submitted && <div className="alert alert-success">Registro completado con éxito</div>}
 
-                  <div className="form-check d-flex justify-content-center mb-4">
-                    <input name="newsletter" checked={form.newsletter} onChange={handleChange} className="form-check-input me-2" type="checkbox" id="newsletter" />
-                    <label className="form-check-label" htmlFor="newsletter">
-                      Suscríbete para recibir promociones y noticias
-                    </label>
-                  </div>
+          <form onSubmit={handleSubmit} noValidate>
 
-                  <button type="submit" className="btn btn-primary btn-block mb-4 w-100">Registrarse</button>
+            {/* Nombre */}
+            <input
+              name="username"
+              placeholder="Nombre"
+              className={`form-control mb-3 ${errors.username ? "is-invalid" : ""}`}
+              value={form.username}
+              onChange={handleChange}
+            />
 
-                </form>
-              </div>
-            </div>
-          </div>
+            {/* Apellido */}
+            <input
+              name="lastname"
+              placeholder="Apellido"
+              className={`form-control mb-3 ${errors.lastname ? "is-invalid" : ""}`}
+              value={form.lastname}
+              onChange={handleChange}
+            />
 
-          <div className="col-lg-6 mb-5 mb-lg-0 d-none d-lg-block">
-            <img src={papahijo} className="w-100 rounded-4 shadow-4" alt="Hombre e hijo sentados en un sofá" />
-          </div>
+            {/* RUT */}
+            <input
+              name="rut"
+              placeholder="RUT (ej: 12345678-9)"
+              className={`form-control mb-3 ${errors.rut ? "is-invalid" : ""}`}
+              value={form.rut}
+              onChange={handleChange}
+            />
+
+            {/* Dirección */}
+            <input
+              name="address"
+              placeholder="Dirección"
+              className={`form-control mb-3 ${errors.address ? "is-invalid" : ""}`}
+              value={form.address}
+              onChange={handleChange}
+            />
+
+            {/* Email */}
+            <input
+              name="email"
+              placeholder="Correo electrónico"
+              type="email"
+              className={`form-control mb-3 ${errors.email ? "is-invalid" : ""}`}
+              value={form.email}
+              onChange={handleChange}
+            />
+
+            {/* Contraseña */}
+            <input
+              name="password"
+              placeholder="Contraseña"
+              type="password"
+              className={`form-control mb-3 ${errors.password ? "is-invalid" : ""}`}
+              value={form.password}
+              onChange={handleChange}
+            />
+
+            <button type="submit" className="btn btn-primary w-100 mt-3">
+              Registrarse
+            </button>
+          </form>
         </div>
-      </section>
-    </>
+
+        <div className="col-lg-6 d-none d-lg-block">
+          <img src={papahijo} className="w-100 rounded-4 shadow-4" />
+        </div>
+
+      </div>
+    </section>
   );
 }

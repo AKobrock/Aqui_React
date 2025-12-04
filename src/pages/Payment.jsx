@@ -1,26 +1,37 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-
+import { getPapaByIdBackend } from '../services/PapaService'
 // Se elimina la importación de Payment.css, ya que los estilos ahora están en index.css
 
 export default function Payment(){
   const [params] = useSearchParams();
   const id = params.get('id');
   const [papa, setPapa] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const [renter, setRenter] = useState({ fullName: '', email: '', address: '', comuna: '', region: '', date: '', hours: 1 });
   const [payment, setPayment] = useState({ holder: '', card: '', exp: '', cvv: '' });
   const [agree, setAgree] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
+  const [total, setTotal] = useState(0);
 
-  useEffect(()=>{
-    if(!id) return;
-    fetch('/papas.json').then(r=>r.json()).then(d=>{
-      const found = (d.papas||[]).find(p=> String(p.id) === String(id));
-      setPapa(found || null);
-    })
-  },[id]);
+  useEffect(() => {
+    async function fetchPapa() {
+      if (!id) return;
+
+      try {
+        const data = await getPapaByIdBackend(id);
+        console.log(data);
+        setPapa(data);
+        setLoading(true);
+      } catch (e) {
+        console.error("Error cargando papá:", e);
+      }
+    }
+
+    fetchPapa();
+  }, [id]);
 
   const today = (()=>{
     const d = new Date();
@@ -33,6 +44,10 @@ export default function Payment(){
   const handleRenter = (e)=>{
     const { name, value } = e.target;
     setRenter(s=>({ ...s, [name]: name === 'hours' ? Math.max(1, Math.min(8, Number(value||1))) : value }));
+    if(loading){
+      console.log(renter.hours)
+      setTotal(papa.precio * renter.hours);
+    }
   };
   const handlePayment = (e)=> setPayment(s=>({ ...s, [e.target.name]: e.target.value }));
 
@@ -84,10 +99,17 @@ export default function Payment(){
     if(!validate()) return;
     setSubmitted(true);
   };
+  
 
-  const papaPrice = papa ? Number(papa.price_per_hour || papa.price || 0) : 0;
-  const hours = Math.max(1, Number(renter.hours || 1));
-  const total = papaPrice * hours;
+  
+
+    if (!loading) {
+    return (
+      <div className="container py-5 text-center">
+        <h3>Cargando información del papá...</h3>
+      </div>
+    );
+  }
 
   if (submitted) {
     return (
@@ -104,7 +126,7 @@ export default function Payment(){
     );
   }
 
-  return (
+   return (
     <div className="container py-5 payment-container">
       <h1 className="mb-3">Factura de Pago</h1>
 
@@ -114,7 +136,7 @@ export default function Payment(){
         <div className="card mb-4">
           <div className="card-body">
             <h5 className="card-title">Renta para: <strong>{papa.name}</strong></h5>
-            <p className="card-text">Precio por hora: <strong>{papa.price_display || (papaPrice ? `$ ${papaPrice}` : '—')}</strong></p>
+            <p className="card-text">Precio por hora: <strong>{papa.precio}</strong></p>
           </div>
         </div>
       )}
@@ -209,9 +231,9 @@ export default function Payment(){
           <div className="card payment-summary-card">
             <div className="card-body">
               <h5 className="card-title">Resumen</h5>
-              <p className="mb-1">Papá: <strong>{papa?.name || '—'}</strong></p>
-              <p className="mb-1">Precio/hora: <strong>{papa?.price_display || (papaPrice ? `$ ${papaPrice}` : '—')}</strong></p>
-              <p className="mb-1">Horas: <strong>{hours}</strong></p>
+              <p className="mb-1">Papá: <strong>{papa.nombre || '—'}</strong></p>
+              <p className="mb-1">Precio/hora: <strong>{papa.precio || (papaPrice ? `$ ${papaPrice}` : '—')}</strong></p>
+              <p className="mb-1">Horas: <strong>{renter.hours}</strong></p>
               <hr />
               <h4>Total: <strong>{ papa ? new Intl.NumberFormat('es-CL',{ style: 'currency', currency: 'CLP' }).format(total) : '—' }</strong></h4>
             </div>
@@ -220,4 +242,5 @@ export default function Payment(){
       </form>
     </div>
   );
+  
 }

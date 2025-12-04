@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useLogin } from "../context/LoginContext"; // Hook de login
+import { useLogin } from "../context/LoginContext";
 import { loginUserService } from "../services/AuthService";
 
 function Sesion() {
   const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState(null);
+  const { loginUser } = useLogin();
   const navigate = useNavigate();
-  const { loginUser } = useLogin(); // contexto del usuario
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,52 +19,44 @@ function Sesion() {
     setError(null);
 
     try {
-      // 🔵 Llamar al backend
       const data = await loginUserService(form);
 
-      // 🔵 Guardar en contexto global
-      loginUser(data.user, data.token);
+      const { token, user } = data;
 
-      alert("¡Bienvenido!");
+      loginUser(user, token);
 
-      // Redirigir
       navigate("/perfil");
     } catch (err) {
-      console.error(err);
-      setError("Credenciales incorrectas.");
+      setError("Credenciales incorrectas");
     }
   };
 
   return (
     <div className="container mt-5 pt-5">
-      <h2 className="text-center mb-4">Iniciar sesión</h2>
+      <h2 className="mb-3 text-center">Iniciar sesión</h2>
 
       {error && <div className="alert alert-danger">{error}</div>}
 
-      <form onSubmit={handleSubmit} className="col-md-6 mx-auto">
-        <label>Email:</label>
-        <input
+      <form onSubmit={handleSubmit} className="col-md-4 mx-auto">
+        <label className="form-label">Email</label>
+        <input 
           type="email"
           name="email"
-          className="form-control"
-          value={form.email}
+          className="form-control mb-3"
           onChange={handleChange}
           required
         />
 
-        <label className="mt-3">Contraseña:</label>
-        <input
+        <label className="form-label">Contraseña</label>
+        <input 
           type="password"
           name="password"
-          className="form-control"
-          value={form.password}
+          className="form-control mb-3"
           onChange={handleChange}
           required
         />
 
-        <button type="submit" className="btn btn-primary w-100 mt-4">
-          Iniciar sesión
-        </button>
+        <button className="btn btn-primary w-100">Ingresar</button>
       </form>
     </div>
   );
