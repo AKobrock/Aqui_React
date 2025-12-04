@@ -12,9 +12,12 @@ import Nosotros from './pages/Nosotros';
 import Contacto from './pages/Contacto';
 import Payment from './pages/Payment';
 import './styles/App.css';
+import { PapasProvider } from "./context/PapasProvider";
+
 
 function App() {
   return (
+    <PapasProvider>
     <LoginProvider>
       <Router>
         <Navbar />
@@ -22,7 +25,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Inicio />} />
             <Route path="/papas" element={<Papas />} />
-            <Route path="/PapaDetail/:id" element={<PapaDetail />} />
+            <Route path="/papa/:id" element={<PapaDetail />} />
             <Route path="/sesion" element={<Sesion />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/perfil" element={<Perfil />} />
@@ -33,6 +36,7 @@ function App() {
         </div>
       </Router>
     </LoginProvider>
+    </PapasProvider>
   );
 }
 

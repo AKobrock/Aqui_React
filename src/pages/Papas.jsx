@@ -11,7 +11,12 @@ function Papas() {
   useEffect(() => {
     getPapas()
       .then(data => {
-        setPapas(data.papas);
+        setPapas(data || []); // <-- FIX
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("Error cargando papas:", err);
+        setPapas([]);
         setLoading(false);
       });
   }, []);

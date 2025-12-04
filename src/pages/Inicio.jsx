@@ -3,21 +3,12 @@ import { Link } from "react-router-dom";
 import portada1 from "../assets/portada_2.png";
 import Carousel from '../components/Carousel';
 import Loading from '../components/Loading';
-import { getPapas } from '../services/PapaService';
+import { usePapas  } from "../context/PapasProvider";
 
 import '../styles/Inicio.css';
 
 function Inicio() {
-  const [papas, setPapas] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    getPapas()
-      .then(data => {
-        setPapas(data.papas);
-        setLoading(false);
-      });
-  }, []);
+  const { papas, loading } = usePapas();
 
   if (loading) return <Loading />;
 
