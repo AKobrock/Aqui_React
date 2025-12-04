@@ -1,30 +1,37 @@
-/* eslint-disable react-refresh/only-export-components */
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
-export const LoginContext = createContext();
+const LoginContext = createContext();
 
 export function LoginProvider({ children }) {
-    const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null);
 
-    useEffect(() => {
-        const usuarioGuardado = sessionStorage.getItem("user");
-        if (usuarioGuardado) setUser(usuarioGuardado);
-    }, []);
+  // Mantener sesión al recargar
+  useEffect(() => {
+    const savedUser = localStorage.getItem("userData");
+    if (savedUser) setUser(JSON.parse(savedUser));
+  }, []);
 
-    const login = (userName) => {
-        sessionStorage.setItem("user", userName);
-        setUser(userName);
-    };
+  // Login usuario normal
+  const loginUser = (userData, token) => {
+    localStorage.setItem("userToken", token);
+    localStorage.setItem("userData", JSON.stringify(userData));
+    setUser(userData);
+  };
 
-    const logout = () => {
-        sessionStorage.removeItem("user");
-        setUser(null);
-    };
+  const logoutUser = () => {
+    localStorage.removeItem("userToken");
+    localStorage.removeItem("userData");
+    setUser(null);
+  };
 
-    return (
-        <LoginContext.Provider value={{ user, login, logout }}>
-            {children}
-        </LoginContext.Provider>
-    );
+  return (
+    <LoginContext.Provider value={{ user, loginUser, logoutUser }}>
+      {children}
+    </LoginContext.Provider>
+  );
+}
+
+export function useLogin() {
+  return useContext(LoginContext);
 }
 

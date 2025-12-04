@@ -86,6 +86,10 @@ function AdminDashboard() {
                 <Link to="/" className="btn btn-outline-secondary btn-sm">
                   Ir al inicio
                 </Link>
+                <Link to="/admin/usuarios/dashboard" className="btn btn-outline-primary w-100 mt-3">
+                  Ver dashboard de usuarios
+                </Link>
+
               </div>
             </div>
           </div>

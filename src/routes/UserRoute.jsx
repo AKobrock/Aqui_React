@@ -8,3 +8,5 @@ export default function UserRoute({ children }) {
 
   return children;
 }
+
+//protección de usuarios
