@@ -1,58 +1,23 @@
-import { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
-import PapaCard from '../components/PapaCard';
-import Loading from '../components/Loading';
-import { getPapas } from '../services/PapaService';
+import { usePapas } from "../context/PapasProvider";
+import PapaCard from "../components/PapaCard";
 
 function Papas() {
-  const [papas, setPapas] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { papas, loading } = usePapas();
 
-  useEffect(() => {
-    getPapas()
-      .then(data => {
-        setPapas(data || []); // <-- FIX
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error("Error cargando papas:", err);
-        setPapas([]);
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) return <Loading />;
+  if (loading) return <p>Cargando papás...</p>;
 
   return (
-    <>
-      <section className="py-5 text-center container">
-        <div className="texto-explicativo">
-          <h1>¡Aquí Papá!</h1>
-          <p>
-            En Aquí Papá! tenemos diferentes tipos de papás para cada ocasión:
-            cariñosos, consejeros, divertidos, protectores o sabios. Cada uno con
-            cualidades únicas, listos para acompañarte en momentos especiales,
-            enseñarte nuevas cosas o darte el consejo que necesitas.
-          </p>
-        </div>
+    <div className="container mt-5 pt-5">
+      <h2 className="mb-4 text-center">Nuestros Papás</h2>
 
-        <div className="divider"></div>
-
-        <div className="album-papas">
-          <div className="container">
-            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-              {papas.map(papa => (
-                <div key={papa.id} className="col d-flex align-items-stretch">
-                  <PapaCard papa={papa} />
-                </div>
-              ))}
-
-            </div>
+      <div className="row row-cols-1 row-cols-md-3 g-4">
+        {papas.map((papa) => (
+          <div key={papa.id} className="col">
+            <PapaCard papa={papa} />
           </div>
-        </div>
-      </section>
-    </>
+        ))}
+      </div>
+    </div>
   );
 }
 

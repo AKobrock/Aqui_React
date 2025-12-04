@@ -1,0 +1,47 @@
+/* src/styles/Admin.css */
+
+.admin-dashboard h1 {
+  font-weight: 700;
+}
+
+.admin-card {
+  border-radius: 1rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.admin-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.75rem 1.25rem rgba(0, 0, 0, 0.08);
+}
+
+.admin-papas .admin-table-wrapper {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.admin-papa-thumb {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+
+/* Animación suave para las filas */
+@keyframes adminRowFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.admin-row-appear {
+  animation: adminRowFadeInUp 0.25s ease-out;
+}
+
+/* Modal control (ya ayudamos a Bootstrap con d-block) */
+.admin-modal .modal-content {
+  border-radius: 1rem;
+}
