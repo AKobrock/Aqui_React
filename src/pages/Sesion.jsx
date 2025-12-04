@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLogin } from "../context/LoginContext";
-import { loginUserService } from "../services/AuthService";
+import { useAdminAuth } from "../context/AdminAuthContext"; 
+import { loginUserService, loginAdminService } from "../services/AuthService";
 
 function Sesion() {
   const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState(null);
-  const { loginUser } = useLogin();
+
+  const { loginUser } = useLogin();          
+  const { loginAdmin } = useAdminAuth();    
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -19,14 +23,30 @@ function Sesion() {
     setError(null);
 
     try {
-      const data = await loginUserService(form);
+      let data;
 
-      const { token, user } = data;
+      // 🔍 Detectar si es admin por el dominio del correo
+      if (form.email.endsWith("@admin.cl")) {
+        console.log("Intentando iniciar sesión como ADMIN...");
+        data = await loginAdminService(form);
 
-      loginUser(user, token);
+        const { token, admin } = data;
+        loginAdmin(admin, token);
 
-      navigate("/perfil");
+        navigate("/admin/dashboard"); // Ruta donde van los admin
+      } 
+      else {
+        console.log("Intentando iniciar sesión como USUARIO...");
+        data = await loginUserService(form);
+
+        const { token, user } = data;
+        loginUser(user, token);
+
+        navigate("/perfil"); // Ruta del usuario normal
+      }
+
     } catch (err) {
+      console.error(err);
       setError("Credenciales incorrectas");
     }
   };
@@ -39,7 +59,7 @@ function Sesion() {
 
       <form onSubmit={handleSubmit} className="col-md-4 mx-auto">
         <label className="form-label">Email</label>
-        <input 
+        <input
           type="email"
           name="email"
           className="form-control mb-3"
@@ -48,7 +68,7 @@ function Sesion() {
         />
 
         <label className="form-label">Contraseña</label>
-        <input 
+        <input
           type="password"
           name="password"
           className="form-control mb-3"
