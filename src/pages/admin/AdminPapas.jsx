@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { usePapas } from "../../context/PapasProvider";
 import { deletePapa } from "../../services/PapaService";
@@ -9,6 +9,11 @@ function AdminPapas() {
   const [selectedPapa, setSelectedPapa] = useState(null);
   const [deleting, setDeleting] = useState(false);
   const [error, setError] = useState(null);
+
+  // 🟩 REFRESCAR PAPÁS AL ENTRAR A LA PÁGINA
+  useEffect(() => {
+    refreshPapas();
+  }, []);
 
   const openDeleteModal = (papa) => {
     setSelectedPapa(papa);
@@ -28,7 +33,11 @@ function AdminPapas() {
 
     try {
       await deletePapa(selectedPapa.id);
+
+      // 🟩 SINCRONIZAR LISTA DESPUÉS DE ELIMINAR
+      await refreshPapas();
       removePapa(selectedPapa.id);
+
       closeDeleteModal();
       alert(`Papá "${selectedPapa.nombre} ${selectedPapa.apellido}" eliminado.`);
     } catch (err) {
@@ -186,8 +195,8 @@ function AdminPapas() {
               </div>
             </div>
           </div>
-          {/* Backdrop */}
-          <div className="modal-backdrop fade show"></div>
+
+          {/* Backdrop ELIMINADO (era el problema de bloqueo) */}
         </div>
       )}
     </div>
