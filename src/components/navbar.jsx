@@ -39,7 +39,6 @@ function Navbar() {
               <Link to="/contacto" className="nav-link">Contacto</Link>
             </li>
 
-            {/* ADMIN solo si hay sesión admin */}
             {admin && (
               <li className="nav-item">
                 <Link to="/admin" className="nav-link">Panel Admin</Link>
@@ -49,12 +48,27 @@ function Navbar() {
           </ul>
         </div>
 
+        {/* ⬇️ Contenedor derecha */}
         <div className="d-flex align-items-center ms-auto">
 
-          {user && <span className="me-3">Hola, {user.username}</span>}
-          {admin && <span className="me-3">👑 Admin: {admin.username}</span>}
+          {/* Usuario normal */}
+          {user && (
+            <span className="me-3 fw-bold">
+              Hola, {user.username}
+            </span>
+          )}
 
-          {/* BOTONES DE LOGIN / LOGOUT */}
+          {/* 🎖 ADMIN en dorado */}
+          {admin && (
+            <span 
+              className="me-3"
+              style={{ color: "#FFD700", fontWeight: "bold" }}
+            >
+              👑 Admin: {admin.username}
+            </span>
+          )}
+
+          {/* Botones login/logout */}
           {!user && !admin && (
             <>
               <Link to="/sesion" className="nav-link text-primary me-2">Ingresar</Link>

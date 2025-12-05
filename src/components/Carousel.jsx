@@ -8,9 +8,9 @@ function Carousel({ papas }) {
         {papas.map((papa, index) => (
           <div key={papa.id} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
             <img 
-              src={papa.image} 
+              src={papa.imagenURL} 
               className="d-block w-100" 
-              alt={papa.name}
+              alt={papa.nombre}
             />
             <div 
               className="carousel-caption d-block" 
@@ -29,8 +29,8 @@ function Carousel({ papas }) {
                 color: 'white'
               }}
             >
-              <h5>{papa.name}</h5>
-              <p>{papa.description}</p>
+              <h5>{papa.nombre}</h5>
+              <p>{papa.descripcion}</p>
               <Link 
                 to={`/PapaDetail/${papa.id}`} 
                 className="btn btn-success"
